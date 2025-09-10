@@ -1,3 +1,4 @@
+using IT09_DE1_N8.Forms;
 namespace IT09_DE1_N8
 {
     internal static class Program
@@ -11,7 +12,7 @@ namespace IT09_DE1_N8
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            Application.Run(new LoginForm());
         }
     }
 }
