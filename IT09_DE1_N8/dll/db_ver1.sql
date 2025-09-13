@@ -7,7 +7,7 @@
     DienThoai VARCHAR(15),
     ChucVu NVARCHAR(50),
     Username AS ('user' + CAST(MaNV AS VARCHAR(10))) PERSISTED UNIQUE,
-    Password VARCHAR(50) NOT NULL DEFAULT '1'
+    Password VARCHAR(100) NOT NULL DEFAULT '1'
 );
 
 CREATE TABLE KhachHang (

@@ -29,80 +29,114 @@
 
         private void InitializeComponent()
         {
-            this.lblUsername = new System.Windows.Forms.Label();
-            this.lblPassword = new System.Windows.Forms.Label();
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.btnLogin = new System.Windows.Forms.Button();
-            this.btnRegister = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
+            lblUsername = new Label();
+            lblPassword = new Label();
+            txtUsername = new TextBox();
+            txtPassword = new TextBox();
+            btnLogin = new Button();
+            btnRegister = new Button();
+            pictureBox1 = new PictureBox();
+            title = new Label();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
             // 
             // lblUsername
             // 
-            this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(30, 30);
-            this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(80, 20);
-            this.lblUsername.TabIndex = 0;
-            this.lblUsername.Text = "Username:";
+            lblUsername.AutoSize = true;
+            lblUsername.Location = new Point(119, 151);
+            lblUsername.Name = "lblUsername";
+            lblUsername.Size = new Size(63, 15);
+            lblUsername.TabIndex = 0;
+            lblUsername.Text = "Username:";
             // 
             // lblPassword
             // 
-            this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(30, 70);
-            this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(77, 20);
-            this.lblPassword.TabIndex = 1;
-            this.lblPassword.Text = "Password:";
+            lblPassword.AutoSize = true;
+            lblPassword.Location = new Point(119, 191);
+            lblPassword.Name = "lblPassword";
+            lblPassword.Size = new Size(60, 15);
+            lblPassword.TabIndex = 1;
+            lblPassword.Text = "Password:";
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(130, 27);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(200, 27);
-            this.txtUsername.TabIndex = 2;
+            txtUsername.Location = new Point(219, 148);
+            txtUsername.Name = "txtUsername";
+            txtUsername.Size = new Size(200, 23);
+            txtUsername.TabIndex = 2;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(130, 67);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(200, 27);
-            this.txtPassword.TabIndex = 3;
+            txtPassword.Location = new Point(219, 188);
+            txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '*';
+            txtPassword.Size = new Size(200, 23);
+            txtPassword.TabIndex = 3;
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(130, 110);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(90, 30);
-            this.btnLogin.TabIndex = 4;
-            this.btnLogin.Text = "Đăng nhập";
-            this.btnLogin.UseVisualStyleBackColor = true;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            btnLogin.Location = new Point(219, 231);
+            btnLogin.Name = "btnLogin";
+            btnLogin.Size = new Size(90, 30);
+            btnLogin.TabIndex = 4;
+            btnLogin.Text = "Đăng nhập";
+            btnLogin.UseVisualStyleBackColor = true;
+            btnLogin.Click += btnLogin_Click;
             // 
             // btnRegister
             // 
-            this.btnRegister.Location = new System.Drawing.Point(240, 110);
-            this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(90, 30);
-            this.btnRegister.TabIndex = 5;
-            this.btnRegister.Text = "Đăng ký";
-            this.btnRegister.UseVisualStyleBackColor = true;
-            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
+            btnRegister.Location = new Point(329, 231);
+            btnRegister.Name = "btnRegister";
+            btnRegister.Size = new Size(90, 30);
+            btnRegister.TabIndex = 5;
+            btnRegister.Text = "Đăng ký";
+            btnRegister.UseVisualStyleBackColor = true;
+            btnRegister.Click += btnRegister_Click;
             // 
-            // FormLogin
+            // pictureBox1
             // 
-            this.ClientSize = new System.Drawing.Size(380, 180);
-            this.Controls.Add(this.btnRegister);
-            this.Controls.Add(this.btnLogin);
-            this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.txtUsername);
-            this.Controls.Add(this.lblPassword);
-            this.Controls.Add(this.lblUsername);
-            this.Name = "FormLogin";
-            this.Text = "Đăng nhập";
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.ImageLocation = "D:\\HOU\\IT09\\IT09_DE1_N8\\IT09_DE1_N8\\assets\\logo.jpg";
+            pictureBox1.Location = new Point(139, 61);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(88, 56);
+            pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBox1.TabIndex = 6;
+            pictureBox1.TabStop = false;
+            pictureBox1.WaitOnLoad = true;
+            pictureBox1.Click += pictureBox1_Click;
+            // 
+            // title
+            // 
+            title.AutoSize = true;
+            title.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+            title.ForeColor = Color.LightSkyBlue;
+            title.Location = new Point(245, 71);
+            title.Name = "title";
+            title.Size = new Size(156, 37);
+            title.TabIndex = 7;
+            title.Text = "WaterHOU";
+            title.Click += WaterHOU_Click;
+            // 
+            // LoginForm
+            // 
+            ClientSize = new Size(590, 346);
+            Controls.Add(title);
+            Controls.Add(pictureBox1);
+            Controls.Add(btnRegister);
+            Controls.Add(btnLogin);
+            Controls.Add(txtPassword);
+            Controls.Add(txtUsername);
+            Controls.Add(lblPassword);
+            Controls.Add(lblUsername);
+            Name = "LoginForm";
+            Text = "Đăng nhập";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
+        private PictureBox pictureBox1;
+        private Label title;
     }
 }

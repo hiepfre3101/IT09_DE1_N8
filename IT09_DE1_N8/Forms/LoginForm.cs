@@ -49,5 +49,20 @@ namespace IT09_DE1_N8.Forms
             RegisterForm fr = new RegisterForm();
             fr.ShowDialog();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void WaterHOU_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
