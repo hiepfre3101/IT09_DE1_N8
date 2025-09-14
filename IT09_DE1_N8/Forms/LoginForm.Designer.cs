@@ -29,16 +29,13 @@
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             lblUsername = new Label();
             lblPassword = new Label();
             txtUsername = new TextBox();
             txtPassword = new TextBox();
             btnLogin = new Button();
             btnRegister = new Button();
-            pictureBox1 = new PictureBox();
             title = new Label();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // lblUsername
@@ -94,19 +91,6 @@
             btnRegister.UseVisualStyleBackColor = true;
             btnRegister.Click += btnRegister_Click;
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.ImageLocation = "D:\\HOU\\IT09\\IT09_DE1_N8\\IT09_DE1_N8\\assets\\logo.jpg";
-            pictureBox1.Location = new Point(139, 61);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(88, 56);
-            pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
-            pictureBox1.TabIndex = 6;
-            pictureBox1.TabStop = false;
-            pictureBox1.WaitOnLoad = true;
-            pictureBox1.Click += pictureBox1_Click;
-            // 
             // title
             // 
             title.AutoSize = true;
@@ -117,13 +101,11 @@
             title.Size = new Size(156, 37);
             title.TabIndex = 7;
             title.Text = "WaterHOU";
-            title.Click += WaterHOU_Click;
             // 
             // LoginForm
             // 
             ClientSize = new Size(590, 346);
             Controls.Add(title);
-            Controls.Add(pictureBox1);
             Controls.Add(btnRegister);
             Controls.Add(btnLogin);
             Controls.Add(txtPassword);
@@ -132,11 +114,9 @@
             Controls.Add(lblUsername);
             Name = "LoginForm";
             Text = "Đăng nhập";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
-        private PictureBox pictureBox1;
         private Label title;
     }
 }

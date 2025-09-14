@@ -10,6 +10,7 @@ namespace IT09_DE1_N8.Forms
         public RegisterForm()
         {
             InitializeComponent();
+            this.AcceptButton = btnRegister;
         }
 
         private void btnRegister_Click(object sender, EventArgs e)

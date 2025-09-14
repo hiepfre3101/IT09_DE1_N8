@@ -32,6 +32,26 @@ namespace IT09_DE1_N8.Forms
 
             this.MainMenuStrip = menu;
             this.Controls.Add(menu);
+            mnNhanVien.Click += (s, e) => {
+                FormNhanVien f = new FormNhanVien();
+                f.ShowDialog();
+            };
+
+            mnKhachHang.Click += (s, e) => {
+                FormKhachHang f = new FormKhachHang();
+                f.ShowDialog();
+            };
+
+            mnChiSoNuoc.Click += (s, e) => {
+                FormChiSoNuoc f = new FormChiSoNuoc();
+                f.ShowDialog();
+            };
+
+            mnBaoCao.Click += (s, e) => {
+                FormHoaDon f = new FormHoaDon();
+                f.ShowDialog();
+            };
+
         }
 
     }

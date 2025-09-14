@@ -177,10 +177,17 @@ BEGIN
 END;
 GO
 
-CREATE PROCEDURE sp_GetDongHoNuoc
+CREATE OR ALTER PROCEDURE sp_GetDongHoNuoc
 AS
 BEGIN
-    SELECT * FROM DongHoNuoc;
+    SELECT 
+        dh.MaDongHo,
+        dh.MaKH,
+        kh.HoTenChuHo AS TenKH, -- hoặc cột tên khách hàng mà bạn đang có
+        dh.SoHieu,
+        dh.NgayLapDat
+    FROM DongHoNuoc dh
+    JOIN KhachHang kh ON dh.MaKH = kh.MaKH;
 END;
 GO
 
