@@ -22,11 +22,13 @@ namespace IT09_DE1_N8.Forms
 
             ToolStripMenuItem mnNhanVien = new ToolStripMenuItem("Quản lý Nhân viên");
             ToolStripMenuItem mnKhachHang = new ToolStripMenuItem("Quản lý Khách hàng");
-            ToolStripMenuItem mnChiSoNuoc = new ToolStripMenuItem("Cập nhật Chỉ số nước");
+            ToolStripMenuItem mnDongHoNuoc = new ToolStripMenuItem("Quản lý Đồng hồ nước");
+            ToolStripMenuItem mnChiSoNuoc = new ToolStripMenuItem("Quản lý Chỉ số nước");
             ToolStripMenuItem mnBaoCao = new ToolStripMenuItem("Báo cáo - Hóa đơn");
 
             menu.Items.Add(mnNhanVien);
             menu.Items.Add(mnKhachHang);
+            menu.Items.Add(mnDongHoNuoc);
             menu.Items.Add(mnChiSoNuoc);
             menu.Items.Add(mnBaoCao);
 
@@ -44,6 +46,11 @@ namespace IT09_DE1_N8.Forms
 
             mnChiSoNuoc.Click += (s, e) => {
                 FormChiSoNuoc f = new FormChiSoNuoc();
+                f.ShowDialog();
+            };
+
+            mnDongHoNuoc.Click += (s, e) => {
+                FormDongHoNuoc f = new FormDongHoNuoc();
                 f.ShowDialog();
             };
 

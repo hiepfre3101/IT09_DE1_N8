@@ -4,9 +4,6 @@
     {
         private System.ComponentModel.IContainer components = null;
         private System.Windows.Forms.DataGridView dgvChiSo;
-        private System.Windows.Forms.TextBox txtMaDongHo, txtThang, txtNam, txtChiSoCu, txtChiSoMoi, txtMaNV;
-        private System.Windows.Forms.Button btnAdd, btnUpdate, btnDelete;
-        private System.Windows.Forms.Label lblMaDongHo, lblThang, lblNam, lblChiSoCu, lblChiSoMoi, lblMaNV;
 
         protected override void Dispose(bool disposing)
         {
@@ -17,167 +14,227 @@
         private void InitializeComponent()
         {
             dgvChiSo = new DataGridView();
-            lblMaDongHo = new Label();
-            txtMaDongHo = new TextBox();
-            lblThang = new Label();
-            txtThang = new TextBox();
-            lblNam = new Label();
-            txtNam = new TextBox();
+            groupBoxInfo = new GroupBox();
+            lblMaNhanVien = new Label();
+            cboMaNhanVien = new ComboBox();
+            lblDongHo = new Label();
+            lblThangChiSo = new Label();
+            cboMaDongHo = new ComboBox();
+            txtThangChiSo = new TextBox();
+            lblNamChiSo = new Label();
+            txtNamChiSo = new TextBox();
             lblChiSoCu = new Label();
             txtChiSoCu = new TextBox();
             lblChiSoMoi = new Label();
             txtChiSoMoi = new TextBox();
-            lblMaNV = new Label();
-            txtMaNV = new TextBox();
+            pnlButtons = new FlowLayoutPanel();
             btnAdd = new Button();
             btnUpdate = new Button();
             btnDelete = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvChiSo).BeginInit();
+            groupBoxInfo.SuspendLayout();
+            pnlButtons.SuspendLayout();
             SuspendLayout();
-
-            btnUpdate.Enabled = false;
-            btnDelete.Enabled = false;
-
             // 
             // dgvChiSo
             // 
-            dgvChiSo.Location = new Point(0, 0);
+            dgvChiSo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvChiSo.Location = new Point(-4, 258);
             dgvChiSo.Name = "dgvChiSo";
-            dgvChiSo.Size = new Size(226, 150);
+            dgvChiSo.Size = new Size(793, 253);
             dgvChiSo.TabIndex = 0;
+            dgvChiSo.CellClick += dgvChiSo_CellContentClick;
             // 
-            // lblMaDongHo
+            // groupBoxInfo
             // 
-            lblMaDongHo.Location = new Point(0, 0);
-            lblMaDongHo.Name = "lblMaDongHo";
-            lblMaDongHo.Size = new Size(100, 23);
-            lblMaDongHo.TabIndex = 1;
+            groupBoxInfo.Controls.Add(lblMaNhanVien);
+            groupBoxInfo.Controls.Add(cboMaNhanVien);
+            groupBoxInfo.Controls.Add(lblDongHo);
+            groupBoxInfo.Controls.Add(lblThangChiSo);
+            groupBoxInfo.Controls.Add(cboMaDongHo);
+            groupBoxInfo.Controls.Add(txtThangChiSo);
+            groupBoxInfo.Controls.Add(lblNamChiSo);
+            groupBoxInfo.Controls.Add(txtNamChiSo);
+            groupBoxInfo.Controls.Add(lblChiSoCu);
+            groupBoxInfo.Controls.Add(txtChiSoCu);
+            groupBoxInfo.Controls.Add(lblChiSoMoi);
+            groupBoxInfo.Controls.Add(txtChiSoMoi);
+            groupBoxInfo.Location = new Point(12, 12);
+            groupBoxInfo.Name = "groupBoxInfo";
+            groupBoxInfo.Size = new Size(760, 172);
+            groupBoxInfo.TabIndex = 16;
+            groupBoxInfo.TabStop = false;
+            groupBoxInfo.Text = "Thông tin Chỉ số nước";
             // 
-            // txtMaDongHo
+            // lblMaNhanVien
             // 
-            txtMaDongHo.Location = new Point(0, 0);
-            txtMaDongHo.Name = "txtMaDongHo";
-            txtMaDongHo.Size = new Size(100, 23);
-            txtMaDongHo.TabIndex = 2;
+            lblMaNhanVien.AutoSize = true;
+            lblMaNhanVien.Location = new Point(380, 115);
+            lblMaNhanVien.Name = "lblMaNhanVien";
+            lblMaNhanVien.Size = new Size(82, 15);
+            lblMaNhanVien.TabIndex = 19;
+            lblMaNhanVien.Text = "Mã nhân viên:";
+            lblMaNhanVien.UseWaitCursor = true;
             // 
-            // lblThang
+            // cboMaNhanVien
             // 
-            lblThang.Location = new Point(0, 0);
-            lblThang.Name = "lblThang";
-            lblThang.Size = new Size(100, 23);
-            lblThang.TabIndex = 3;
+            cboMaNhanVien.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboMaNhanVien.Location = new Point(480, 112);
+            cboMaNhanVien.Name = "cboMaNhanVien";
+            cboMaNhanVien.Size = new Size(240, 23);
+            cboMaNhanVien.TabIndex = 20;
             // 
-            // txtThang
+            // lblDongHo
             // 
-            txtThang.Location = new Point(0, 0);
-            txtThang.Name = "txtThang";
-            txtThang.Size = new Size(100, 23);
-            txtThang.TabIndex = 4;
+            lblDongHo.AutoSize = true;
+            lblDongHo.Location = new Point(20, 115);
+            lblDongHo.Name = "lblDongHo";
+            lblDongHo.Size = new Size(76, 15);
+            lblDongHo.TabIndex = 17;
+            lblDongHo.Text = "Mã Đồng hồ:";
+            lblDongHo.UseWaitCursor = true;
             // 
-            // lblNam
+            // lblThangChiSo
             // 
-            lblNam.Location = new Point(0, 0);
-            lblNam.Name = "lblNam";
-            lblNam.Size = new Size(100, 23);
-            lblNam.TabIndex = 5;
+            lblThangChiSo.AutoSize = true;
+            lblThangChiSo.Location = new Point(20, 30);
+            lblThangChiSo.Name = "lblThangChiSo";
+            lblThangChiSo.Size = new Size(44, 15);
+            lblThangChiSo.TabIndex = 0;
+            lblThangChiSo.Text = "Tháng:";
             // 
-            // txtNam
+            // cboMaDongHo
             // 
-            txtNam.Location = new Point(0, 0);
-            txtNam.Name = "txtNam";
-            txtNam.Size = new Size(100, 23);
-            txtNam.TabIndex = 6;
+            cboMaDongHo.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboMaDongHo.Location = new Point(120, 112);
+            cboMaDongHo.Name = "cboMaDongHo";
+            cboMaDongHo.Size = new Size(200, 23);
+            cboMaDongHo.TabIndex = 18;
+            // 
+            // txtThangChiSo
+            // 
+            txtThangChiSo.Location = new Point(120, 27);
+            txtThangChiSo.Name = "txtThangChiSo";
+            txtThangChiSo.Size = new Size(200, 23);
+            txtThangChiSo.TabIndex = 1;
+            // 
+            // lblNamChiSo
+            // 
+            lblNamChiSo.AutoSize = true;
+            lblNamChiSo.Location = new Point(380, 30);
+            lblNamChiSo.Name = "lblNamChiSo";
+            lblNamChiSo.Size = new Size(36, 15);
+            lblNamChiSo.TabIndex = 2;
+            lblNamChiSo.Text = "Năm:";
+            // 
+            // txtNamChiSo
+            // 
+            txtNamChiSo.Location = new Point(480, 27);
+            txtNamChiSo.Name = "txtNamChiSo";
+            txtNamChiSo.Size = new Size(240, 23);
+            txtNamChiSo.TabIndex = 3;
             // 
             // lblChiSoCu
             // 
-            lblChiSoCu.Location = new Point(0, 0);
+            lblChiSoCu.AutoSize = true;
+            lblChiSoCu.Location = new Point(20, 70);
             lblChiSoCu.Name = "lblChiSoCu";
-            lblChiSoCu.Size = new Size(100, 23);
-            lblChiSoCu.TabIndex = 7;
+            lblChiSoCu.Size = new Size(59, 15);
+            lblChiSoCu.TabIndex = 4;
+            lblChiSoCu.Text = "Chỉ số cũ:";
             // 
             // txtChiSoCu
             // 
-            txtChiSoCu.Location = new Point(0, 0);
+            txtChiSoCu.Location = new Point(120, 67);
             txtChiSoCu.Name = "txtChiSoCu";
-            txtChiSoCu.Size = new Size(100, 23);
-            txtChiSoCu.TabIndex = 8;
+            txtChiSoCu.Size = new Size(200, 23);
+            txtChiSoCu.TabIndex = 5;
             // 
             // lblChiSoMoi
             // 
-            lblChiSoMoi.Location = new Point(0, 0);
+            lblChiSoMoi.AutoSize = true;
+            lblChiSoMoi.Location = new Point(380, 70);
             lblChiSoMoi.Name = "lblChiSoMoi";
-            lblChiSoMoi.Size = new Size(100, 23);
-            lblChiSoMoi.TabIndex = 9;
+            lblChiSoMoi.Size = new Size(67, 15);
+            lblChiSoMoi.TabIndex = 6;
+            lblChiSoMoi.Text = "Chỉ số mới:";
             // 
             // txtChiSoMoi
             // 
-            txtChiSoMoi.Location = new Point(0, 0);
+            txtChiSoMoi.Location = new Point(480, 67);
             txtChiSoMoi.Name = "txtChiSoMoi";
-            txtChiSoMoi.Size = new Size(100, 23);
-            txtChiSoMoi.TabIndex = 10;
+            txtChiSoMoi.Size = new Size(240, 23);
+            txtChiSoMoi.TabIndex = 7;
             // 
-            // lblMaNV
+            // pnlButtons
             // 
-            lblMaNV.Location = new Point(0, 0);
-            lblMaNV.Name = "lblMaNV";
-            lblMaNV.Size = new Size(100, 23);
-            lblMaNV.TabIndex = 11;
-            // 
-            // txtMaNV
-            // 
-            txtMaNV.Location = new Point(0, 0);
-            txtMaNV.Name = "txtMaNV";
-            txtMaNV.Size = new Size(100, 23);
-            txtMaNV.TabIndex = 12;
+            pnlButtons.Controls.Add(btnAdd);
+            pnlButtons.Controls.Add(btnUpdate);
+            pnlButtons.Controls.Add(btnDelete);
+            pnlButtons.Location = new Point(12, 201);
+            pnlButtons.Name = "pnlButtons";
+            pnlButtons.Size = new Size(760, 40);
+            pnlButtons.TabIndex = 17;
             // 
             // btnAdd
             // 
-            btnAdd.Location = new Point(0, 0);
+            btnAdd.Location = new Point(3, 3);
             btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(75, 23);
-            btnAdd.TabIndex = 13;
+            btnAdd.Size = new Size(100, 30);
+            btnAdd.TabIndex = 0;
+            btnAdd.Text = "Thêm";
             btnAdd.Click += btnAdd_Click;
             // 
             // btnUpdate
             // 
-            btnUpdate.Location = new Point(0, 0);
+            btnUpdate.Enabled = false;
+            btnUpdate.Location = new Point(109, 3);
             btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(75, 23);
-            btnUpdate.TabIndex = 14;
+            btnUpdate.Size = new Size(100, 30);
+            btnUpdate.TabIndex = 1;
+            btnUpdate.Text = "Sửa";
             btnUpdate.Click += btnUpdate_Click;
             // 
             // btnDelete
             // 
-            btnDelete.Location = new Point(0, 0);
+            btnDelete.Enabled = false;
+            btnDelete.Location = new Point(215, 3);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(75, 23);
-            btnDelete.TabIndex = 15;
+            btnDelete.Size = new Size(100, 30);
+            btnDelete.TabIndex = 2;
+            btnDelete.Text = "Xóa";
             btnDelete.Click += btnDelete_Click;
             // 
             // FormChiSoNuoc
             // 
-            ClientSize = new Size(784, 511);
+            ClientSize = new Size(790, 511);
+            Controls.Add(pnlButtons);
+            Controls.Add(groupBoxInfo);
             Controls.Add(dgvChiSo);
-            Controls.Add(lblMaDongHo);
-            Controls.Add(txtMaDongHo);
-            Controls.Add(lblThang);
-            Controls.Add(txtThang);
-            Controls.Add(lblNam);
-            Controls.Add(txtNam);
-            Controls.Add(lblChiSoCu);
-            Controls.Add(txtChiSoCu);
-            Controls.Add(lblChiSoMoi);
-            Controls.Add(txtChiSoMoi);
-            Controls.Add(lblMaNV);
-            Controls.Add(txtMaNV);
-            Controls.Add(btnAdd);
-            Controls.Add(btnUpdate);
-            Controls.Add(btnDelete);
             Name = "FormChiSoNuoc";
             Text = "Quản lý Chỉ số nước";
             ((System.ComponentModel.ISupportInitialize)dgvChiSo).EndInit();
+            groupBoxInfo.ResumeLayout(false);
+            groupBoxInfo.PerformLayout();
+            pnlButtons.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
+        private GroupBox groupBoxInfo;
+        private Label lblThangChiSo;
+        private TextBox txtThangChiSo;
+        private Label lblNamChiSo;
+        private TextBox txtNamChiSo;
+        private Label lblChiSoCu;
+        private TextBox txtChiSoCu;
+        private Label lblChiSoMoi;
+        private TextBox txtChiSoMoi;
+        private Label lblDongHo;
+        private ComboBox cboMaDongHo;
+        private Label lblMaNhanVien;
+        private ComboBox cboMaNhanVien;
+        private FlowLayoutPanel pnlButtons;
+        private Button btnAdd;
+        private Button btnUpdate;
+        private Button btnDelete;
     }
 }

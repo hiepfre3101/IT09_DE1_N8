@@ -12,41 +12,76 @@ namespace IT09_DE1_N8.Services
             _connectionString = connectionString;
         }
 
+        private void ShowToast(string message, string title = "Thông báo")
+        {
+            MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
         public void Add(ChiSoNuoc cs)
         {
-            using SqlConnection conn = new SqlConnection(_connectionString);
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("sp_AddChiSoNuoc", conn);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@MaDongHo", cs.MaDongHo);
-            cmd.Parameters.AddWithValue("@Thang", cs.Thang);
-            cmd.Parameters.AddWithValue("@Nam", cs.Nam);
-            cmd.Parameters.AddWithValue("@ChiSoCu", cs.ChiSoCu);
-            cmd.Parameters.AddWithValue("@ChiSoMoi", cs.ChiSoMoi);
-            cmd.Parameters.AddWithValue("@MaNV", cs.MaNV);
-            cmd.ExecuteNonQuery();
+            try
+            {
+                using SqlConnection conn = new SqlConnection(_connectionString);
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("sp_AddChiSoNuoc", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@MaDongHo", cs.MaDongHo);
+                cmd.Parameters.AddWithValue("@Thang", cs.Thang);
+                cmd.Parameters.AddWithValue("@Nam", cs.Nam);
+                cmd.Parameters.AddWithValue("@ChiSoCu", cs.ChiSoCu);
+                cmd.Parameters.AddWithValue("@ChiSoMoi", cs.ChiSoMoi);
+                cmd.Parameters.AddWithValue("@MaNV", cs.MaNV);
+                cmd.ExecuteNonQuery();
+                ShowToast("Thêm chỉ số nước thành công!");
+            }
+            catch (Exception ex)
+            {
+                ShowToast($"Lỗi khi thêm Chỉ số nước: {ex.Message}", "Lỗi");
+            }
+            
         }
 
         public void Update(ChiSoNuoc cs)
         {
-            using SqlConnection conn = new SqlConnection(_connectionString);
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("sp_UpdateChiSoNuoc", conn);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@MaChiSo", cs.MaChiSo);
-            cmd.Parameters.AddWithValue("@ChiSoCu", cs.ChiSoCu);
-            cmd.Parameters.AddWithValue("@ChiSoMoi", cs.ChiSoMoi);
-            cmd.ExecuteNonQuery();
+
+            try
+            {
+                using SqlConnection conn = new SqlConnection(_connectionString);
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("sp_UpdateChiSoNuoc", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@MaChiSo", cs.MaChiSo);
+                cmd.Parameters.AddWithValue("@ChiSoCu", cs.ChiSoCu);
+                cmd.Parameters.AddWithValue("@ChiSoMoi", cs.ChiSoMoi);
+                cmd.ExecuteNonQuery();
+
+                ShowToast("Cập nhật chỉ số nước thành công!");
+            }
+            catch (Exception ex)
+            {
+                ShowToast($"Lỗi khi Cập nhật Chỉ số nước: {ex.Message}", "Lỗi");
+            }
+           
         }
 
         public void Delete(int maChiSo)
         {
-            using SqlConnection conn = new SqlConnection(_connectionString);
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("sp_DeleteChiSoNuoc", conn);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@MaChiSo", maChiSo);
-            cmd.ExecuteNonQuery();
+            try
+            {
+                using SqlConnection conn = new SqlConnection(_connectionString);
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("sp_DeleteChiSoNuoc", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@MaChiSo", maChiSo);
+                cmd.ExecuteNonQuery();
+
+                ShowToast("Xóa chỉ số nước thành công!");
+            }
+            catch (Exception ex)
+            {
+                ShowToast($"Lỗi khi Xóa Chỉ số nước: {ex.Message}", "Lỗi");
+            }
+         
         }
 
         public List<ChiSoNuoc> GetAll()

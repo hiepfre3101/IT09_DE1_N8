@@ -12,41 +12,72 @@ namespace IT09_DE1_N8.Services
             _connectionString = connectionString;
         }
 
+        private void ShowToast(string message, string title = "Thông báo")
+        {
+            MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
         public void Add(KhachHang kh)
         {
-            using SqlConnection conn = new SqlConnection(_connectionString);
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("sp_AddKhachHang", conn);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@HoTenChuHo", kh.HoTenChuHo);
-            cmd.Parameters.AddWithValue("@DiaChi", kh.DiaChi);
-            cmd.Parameters.AddWithValue("@DienThoai", kh.DienThoai);
-            cmd.Parameters.AddWithValue("@SoHopDong", kh.SoHopDong);
-            cmd.ExecuteNonQuery();
+            try
+            {
+                using SqlConnection conn = new SqlConnection(_connectionString);
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("sp_AddKhachHang", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@HoTenChuHo", kh.HoTenChuHo);
+                cmd.Parameters.AddWithValue("@DiaChi", kh.DiaChi);
+                cmd.Parameters.AddWithValue("@DienThoai", kh.DienThoai);
+                cmd.Parameters.AddWithValue("@SoHopDong", kh.SoHopDong);
+                cmd.ExecuteNonQuery();
+                ShowToast("Thêm khách hàng thành công!");
+            }
+            catch (Exception ex)
+            {
+                ShowToast($"Lỗi khi thêm khách hàng: {ex.Message}", "Lỗi");
+            }
         }
 
         public void Update(KhachHang kh)
         {
-            using SqlConnection conn = new SqlConnection(_connectionString);
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("sp_UpdateKhachHang", conn);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@MaKH", kh.MaKH);
-            cmd.Parameters.AddWithValue("@HoTenChuHo", kh.HoTenChuHo);
-            cmd.Parameters.AddWithValue("@DiaChi", kh.DiaChi);
-            cmd.Parameters.AddWithValue("@DienThoai", kh.DienThoai);
-            cmd.Parameters.AddWithValue("@SoHopDong", kh.SoHopDong);
-            cmd.ExecuteNonQuery();
+            try
+            {
+                using SqlConnection conn = new SqlConnection(_connectionString);
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("sp_UpdateKhachHang", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@MaKH", kh.MaKH);
+                cmd.Parameters.AddWithValue("@HoTenChuHo", kh.HoTenChuHo);
+                cmd.Parameters.AddWithValue("@DiaChi", kh.DiaChi);
+                cmd.Parameters.AddWithValue("@DienThoai", kh.DienThoai);
+                cmd.Parameters.AddWithValue("@SoHopDong", kh.SoHopDong);
+                cmd.ExecuteNonQuery();
+                ShowToast("Cập nhật khách hàng thành công!");
+            }
+            catch (Exception ex)
+            {
+                ShowToast($"Lỗi khi cập nhật khách hàng: {ex.Message}", "Lỗi");
+            }
+          
         }
 
         public void Delete(int maKH)
         {
-            using SqlConnection conn = new SqlConnection(_connectionString);
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("sp_DeleteKhachHang", conn);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@MaKH", maKH);
-            cmd.ExecuteNonQuery();
+            try
+            {
+                using SqlConnection conn = new SqlConnection(_connectionString);
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("sp_DeleteKhachHang", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@MaKH", maKH);
+                cmd.ExecuteNonQuery();
+                ShowToast("Xóa khách hàng thành công!");
+            }
+            catch (Exception ex)
+            {
+                ShowToast($"Lỗi khi xóa khách hàng: {ex.Message}", "Lỗi");
+            }
+         
         }
 
         public List<KhachHang> GetAll()

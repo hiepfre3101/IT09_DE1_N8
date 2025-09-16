@@ -12,39 +12,70 @@ namespace IT09_DE1_N8.Services
             _connectionString = connectionString;
         }
 
+        private void ShowToast(string message, string title = "Thông báo")
+        {
+            MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+
         public void Add(DongHoNuoc dh)
         {
-            using SqlConnection conn = new SqlConnection(_connectionString);
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("sp_AddDongHoNuoc", conn);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@MaKH", dh.MaKH);
-            cmd.Parameters.AddWithValue("@SoHieu", dh.SoHieu);
-            cmd.Parameters.AddWithValue("@NgayLapDat", dh.NgayLapDat ?? (object)DBNull.Value);
-            cmd.ExecuteNonQuery();
+            try
+            {
+                using SqlConnection conn = new SqlConnection(_connectionString);
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("sp_AddDongHoNuoc", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@MaKH", dh.MaKH);
+                cmd.Parameters.AddWithValue("@SoHieu", dh.SoHieu);
+                cmd.Parameters.AddWithValue("@NgayLapDat", dh.NgayLapDat ?? (object)DBNull.Value);
+                cmd.ExecuteNonQuery();
+                ShowToast("Thêm Đồng hồ nước thành công!");
+            }
+            catch(Exception ex)
+            {
+                ShowToast($"Lỗi khi thêm Đồng hồ nước: {ex.Message}", "Lỗi");
+            }
+        
         }
 
         public void Update(DongHoNuoc dh)
         {
-            using SqlConnection conn = new SqlConnection(_connectionString);
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("sp_UpdateDongHoNuoc", conn);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@MaDongHo", dh.MaDongHo);
-            cmd.Parameters.AddWithValue("@MaKH", dh.MaKH);
-            cmd.Parameters.AddWithValue("@SoHieu", dh.SoHieu);
-            cmd.Parameters.AddWithValue("@NgayLapDat", dh.NgayLapDat ?? (object)DBNull.Value);
-            cmd.ExecuteNonQuery();
+            try
+            {
+                using SqlConnection conn = new SqlConnection(_connectionString);
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("sp_UpdateDongHoNuoc", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@MaDongHo", dh.MaDongHo);
+                cmd.Parameters.AddWithValue("@MaKH", dh.MaKH);
+                cmd.Parameters.AddWithValue("@SoHieu", dh.SoHieu);
+                cmd.Parameters.AddWithValue("@NgayLapDat", dh.NgayLapDat ?? (object)DBNull.Value);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                ShowToast($"Lỗi khi cập nhật Đồng hồ nước: {ex.Message}", "Lỗi");
+            }
+         
         }
 
         public void Delete(int maDongHo)
         {
-            using SqlConnection conn = new SqlConnection(_connectionString);
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("sp_DeleteDongHoNuoc", conn);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@MaDongHo", maDongHo);
-            cmd.ExecuteNonQuery();
+            try
+            {
+                using SqlConnection conn = new SqlConnection(_connectionString);
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("sp_DeleteDongHoNuoc", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@MaDongHo", maDongHo);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                ShowToast($"Lỗi khi xóa Đồng hồ nước: {ex.Message}", "Lỗi");
+            }
+      
         }
 
         public List<DongHoNuoc> GetAll()

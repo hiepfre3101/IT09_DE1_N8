@@ -32,21 +32,25 @@
             btnAdd = new Button();
             btnUpdate = new Button();
             btnDelete = new Button();
-
             ((System.ComponentModel.ISupportInitialize)dgvKhachHang).BeginInit();
             groupBoxInfo.SuspendLayout();
             pnlButtons.SuspendLayout();
             SuspendLayout();
-
-            btnUpdate.Enabled = false;
-            btnDelete.Enabled = false;
-
+            // 
+            // dgvKhachHang
+            // 
+            dgvKhachHang.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvKhachHang.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvKhachHang.Location = new Point(12, 190);
+            dgvKhachHang.MultiSelect = false;
+            dgvKhachHang.Name = "dgvKhachHang";
+            dgvKhachHang.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvKhachHang.Size = new Size(760, 294);
+            dgvKhachHang.TabIndex = 2;
+            dgvKhachHang.CellClick += dgvKhachHang_CellContentClick;
             // 
             // groupBoxInfo
             // 
-            groupBoxInfo.Text = "Thông tin khách hàng";
-            groupBoxInfo.Location = new Point(12, 12);
-            groupBoxInfo.Size = new Size(760, 120);
             groupBoxInfo.Controls.Add(lblHoTenChuHo);
             groupBoxInfo.Controls.Add(txtHoTenChuHo);
             groupBoxInfo.Controls.Add(lblDiaChi);
@@ -55,110 +59,124 @@
             groupBoxInfo.Controls.Add(txtDienThoai);
             groupBoxInfo.Controls.Add(lblSoHopDong);
             groupBoxInfo.Controls.Add(txtSoHopDong);
-
+            groupBoxInfo.Location = new Point(12, 12);
+            groupBoxInfo.Name = "groupBoxInfo";
+            groupBoxInfo.Size = new Size(760, 120);
+            groupBoxInfo.TabIndex = 0;
+            groupBoxInfo.TabStop = false;
+            groupBoxInfo.Text = "Thông tin khách hàng";
             // 
             // lblHoTenChuHo
             // 
-            lblHoTenChuHo.Text = "Họ tên chủ hộ:";
-            lblHoTenChuHo.Location = new Point(20, 30);
             lblHoTenChuHo.AutoSize = true;
-
+            lblHoTenChuHo.Location = new Point(20, 30);
+            lblHoTenChuHo.Name = "lblHoTenChuHo";
+            lblHoTenChuHo.Size = new Size(86, 15);
+            lblHoTenChuHo.TabIndex = 0;
+            lblHoTenChuHo.Text = "Họ tên chủ hộ:";
             // 
             // txtHoTenChuHo
             // 
             txtHoTenChuHo.Location = new Point(120, 27);
+            txtHoTenChuHo.Name = "txtHoTenChuHo";
             txtHoTenChuHo.Size = new Size(200, 23);
-
+            txtHoTenChuHo.TabIndex = 1;
             // 
             // lblDiaChi
             // 
-            lblDiaChi.Text = "Địa chỉ:";
-            lblDiaChi.Location = new Point(380, 30);
             lblDiaChi.AutoSize = true;
-
+            lblDiaChi.Location = new Point(380, 30);
+            lblDiaChi.Name = "lblDiaChi";
+            lblDiaChi.Size = new Size(46, 15);
+            lblDiaChi.TabIndex = 2;
+            lblDiaChi.Text = "Địa chỉ:";
             // 
             // txtDiaChi
             // 
             txtDiaChi.Location = new Point(440, 27);
+            txtDiaChi.Name = "txtDiaChi";
             txtDiaChi.Size = new Size(280, 23);
-
+            txtDiaChi.TabIndex = 3;
             // 
             // lblDienThoai
             // 
-            lblDienThoai.Text = "Điện thoại:";
-            lblDienThoai.Location = new Point(20, 70);
             lblDienThoai.AutoSize = true;
-
+            lblDienThoai.Location = new Point(20, 70);
+            lblDienThoai.Name = "lblDienThoai";
+            lblDienThoai.Size = new Size(64, 15);
+            lblDienThoai.TabIndex = 4;
+            lblDienThoai.Text = "Điện thoại:";
             // 
             // txtDienThoai
             // 
             txtDienThoai.Location = new Point(120, 67);
+            txtDienThoai.Name = "txtDienThoai";
             txtDienThoai.Size = new Size(200, 23);
-
+            txtDienThoai.TabIndex = 5;
             // 
             // lblSoHopDong
             // 
-            lblSoHopDong.Text = "Số hợp đồng:";
-            lblSoHopDong.Location = new Point(380, 70);
             lblSoHopDong.AutoSize = true;
-
+            lblSoHopDong.Location = new Point(380, 70);
+            lblSoHopDong.Name = "lblSoHopDong";
+            lblSoHopDong.Size = new Size(78, 15);
+            lblSoHopDong.TabIndex = 6;
+            lblSoHopDong.Text = "Số hợp đồng:";
             // 
             // txtSoHopDong
             // 
             txtSoHopDong.Location = new Point(480, 67);
+            txtSoHopDong.Name = "txtSoHopDong";
             txtSoHopDong.Size = new Size(240, 23);
-
+            txtSoHopDong.TabIndex = 7;
             // 
             // pnlButtons
             // 
-            pnlButtons.Location = new Point(12, 140);
-            pnlButtons.Size = new Size(760, 40);
-            pnlButtons.FlowDirection = FlowDirection.LeftToRight;
             pnlButtons.Controls.Add(btnAdd);
             pnlButtons.Controls.Add(btnUpdate);
             pnlButtons.Controls.Add(btnDelete);
-
+            pnlButtons.Location = new Point(12, 140);
+            pnlButtons.Name = "pnlButtons";
+            pnlButtons.Size = new Size(760, 40);
+            pnlButtons.TabIndex = 1;
             // 
             // btnAdd
             // 
-            btnAdd.Text = "Thêm";
+            btnAdd.Location = new Point(3, 3);
+            btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(100, 30);
+            btnAdd.TabIndex = 0;
+            btnAdd.Text = "Thêm";
             btnAdd.Click += btnAdd_Click;
-
             // 
             // btnUpdate
             // 
-            btnUpdate.Text = "Sửa";
+            btnUpdate.Enabled = false;
+            btnUpdate.Location = new Point(109, 3);
+            btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(100, 30);
+            btnUpdate.TabIndex = 1;
+            btnUpdate.Text = "Sửa";
             btnUpdate.Click += btnUpdate_Click;
-
             // 
             // btnDelete
             // 
-            btnDelete.Text = "Xóa";
+            btnDelete.Enabled = false;
+            btnDelete.Location = new Point(215, 3);
+            btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(100, 30);
+            btnDelete.TabIndex = 2;
+            btnDelete.Text = "Xóa";
             btnDelete.Click += btnDelete_Click;
-
-            // 
-            // dgvKhachHang
-            // 
-            dgvKhachHang.Location = new Point(12, 190);
-            dgvKhachHang.Size = new Size(760, 250);
-            dgvKhachHang.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-            dgvKhachHang.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvKhachHang.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvKhachHang.MultiSelect = false;
-
             // 
             // FormKhachHang
             // 
-            ClientSize = new Size(784, 461);
+            ClientSize = new Size(784, 505);
             Controls.Add(groupBoxInfo);
             Controls.Add(pnlButtons);
             Controls.Add(dgvKhachHang);
             Name = "FormKhachHang";
             Text = "Quản lý Khách hàng";
-
             ((System.ComponentModel.ISupportInitialize)dgvKhachHang).EndInit();
             groupBoxInfo.ResumeLayout(false);
             groupBoxInfo.PerformLayout();

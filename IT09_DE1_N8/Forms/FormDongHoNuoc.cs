@@ -22,7 +22,7 @@ namespace IT09_DE1_N8.Forms
         {
             var listKH = khService.GetAll();
             cboKhachHang.DataSource = listKH;
-            cboKhachHang.DisplayMember = "TenKH"; 
+            cboKhachHang.DisplayMember = "TenKH";
             cboKhachHang.ValueMember = "MaKH";
         }
 
@@ -60,7 +60,9 @@ namespace IT09_DE1_N8.Forms
                 dh.NgayLapDat = dtNgayLapDat.Value;
 
                 service.Update(dh);
+                LoadKhachHang();
                 LoadData();
+                
             }
         }
 
@@ -70,8 +72,20 @@ namespace IT09_DE1_N8.Forms
             {
                 var dh = (DongHoNuoc)dgvDongHo.CurrentRow.DataBoundItem;
                 service.Delete(dh.MaDongHo);
+                ResetForm();
                 LoadData();
+               
             }
+        }
+
+        private void ResetForm()
+        {
+            txtSoHieu.Text = string.Empty;                
+            cboKhachHang.SelectedIndex = -1;              
+            dtNgayLapDat.Value = DateTime.Now;            
+
+            btnUpdate.Enabled = false;                   
+            btnDelete.Enabled = false;                    
         }
 
         private void dgvDongHo_SelectionChanged(object sender, EventArgs e)
@@ -82,6 +96,10 @@ namespace IT09_DE1_N8.Forms
                 txtSoHieu.Text = dh.SoHieu;
                 dtNgayLapDat.Value = (DateTime)dh.NgayLapDat;
                 cboKhachHang.SelectedValue = dh.MaKH;
+
+                btnUpdate.Enabled = true;
+                btnDelete.Enabled = true;
+
             }
         }
     }
