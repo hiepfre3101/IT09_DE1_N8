@@ -1,5 +1,6 @@
 ﻿using IT09_DE1_N8.Models;
 using IT09_DE1_N8.Services;
+using Microsoft.Data.SqlClient;
 
 namespace IT09_DE1_N8.Forms
 {
@@ -15,12 +16,24 @@ namespace IT09_DE1_N8.Forms
             service = new ChiSoNuocServices(connectionString);
             nvService = new NhanVienService();
             dhService = new DongHoNuocServices(connectionString);
+            this.Load += FormChiSoNuoc_Load;
+        }
+
+
+        private void FormChiSoNuoc_Load(object sender, EventArgs e)
+        {
             LoadDongHo();
             LoadNhanVien();
             LoadData();
             ResetForm();
-        }
 
+            // đảm bảo chọn item đầu tiên
+            if (cboMaDongHo.Items.Count > 0)
+                cboMaDongHo.SelectedIndex = 0;
+
+            if (cboMaNhanVien.Items.Count > 0)
+                cboMaNhanVien.SelectedIndex = 0;
+        }
         private void LoadDongHo()
         {
             var listDH = dhService.GetAll();
@@ -47,8 +60,8 @@ namespace IT09_DE1_N8.Forms
             txtThangChiSo.Text = string.Empty;
             txtNamChiSo.Text = string.Empty;
             txtChiSoCu.Text = string.Empty;
-            txtChiSoMoi.Text = string.Empty;                
-            cboMaNhanVien.SelectedIndex = -1;              
+            txtChiSoMoi.Text = string.Empty;
+            cboMaNhanVien.SelectedIndex = -1;
             cboMaDongHo.SelectedIndex = -1;
 
             btnUpdate.Enabled = false;
@@ -114,6 +127,27 @@ namespace IT09_DE1_N8.Forms
 
             }
         }
+        private void cboMaDongHo_SelectedChangedCommited(object sender, EventArgs e)
+        {
+            if (cboMaDongHo.SelectedValue != null)
+            {
+                int maDongHo = Convert.ToInt32(cboMaDongHo.SelectedValue);
+                var dongHo = dhService.GetOne(maDongHo);
+                txtNgayLap.Text = dongHo.NgayLapDat?.ToString("dd-MM-yyyy") ?? "";
+                txtSoHieu.Text = dongHo.SoHieu?.ToString();
+            }
+        }
 
+        private void cboMaNhanVien_SelectedChangedCommited(object sender, EventArgs e)
+        {
+            if (cboMaNhanVien.SelectedValue != null)
+            {
+                int maNV = Convert.ToInt32(cboMaNhanVien.SelectedValue);
+                var nhanvien = nvService.GetOne(maNV);
+                txtSdtNv.Text = nhanvien?.DienThoai;
+                txtChucVu.Text = nhanvien?.ChucVu;
+                txtTenNv.Text = nhanvien?.HoTen;
+            }
+        }
     }
 }

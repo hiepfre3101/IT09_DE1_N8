@@ -124,5 +124,27 @@ namespace IT09_DE1_N8.Services
             }
             return list;
         }
+        public NhanVien? GetOne(int maNhanVien)
+        {
+            using SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("sp_GetNhanVienById", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@MaNhanVien", maNhanVien);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                return new NhanVien
+                {
+                    MaNV = (int)reader["MaNV"],
+                    HoTen = reader["HoTen"].ToString() ?? "",
+                    DienThoai = reader["DienThoai"].ToString() ?? "",
+                    ChucVu = reader["ChucVu"].ToString() ?? ""
+                };
+            }
+
+            return null;
+        }
     }
 }

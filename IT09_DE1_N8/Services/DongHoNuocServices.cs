@@ -99,5 +99,26 @@ namespace IT09_DE1_N8.Services
             }
             return list;
         }
+        public DongHoNuoc? GetOne(int maDongHo)
+        {
+            using SqlConnection conn = new SqlConnection(_connectionString);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("sp_GetDongHoNuocById", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@MaDongHo", maDongHo);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                return new DongHoNuoc
+                {
+                    MaDongHo = (int)reader["MaDongHo"],
+                    SoHieu = reader["SoHieu"].ToString() ?? "",
+                    NgayLapDat = reader["NgayLapDat"] as DateTime?
+                };
+            }
+
+            return null; // không tìm thấy
+        }
     }
 }

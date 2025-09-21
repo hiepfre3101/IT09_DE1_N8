@@ -100,7 +100,15 @@ BEGIN
     SELECT * FROM NhanVien;
 END;
 GO
-
+CREATE PROCEDURE sp_GetNhanVienById
+    @MaNhanVien INT
+AS
+BEGIN
+    SELECT *
+    FROM NhanVien
+    WHERE MaNhanVien = @MaNhanVien;
+END;
+GO
 
 -- Khách hàng 
 CREATE PROCEDURE sp_AddKhachHang
@@ -188,6 +196,16 @@ BEGIN
         dh.NgayLapDat
     FROM DongHoNuoc dh
     JOIN KhachHang kh ON dh.MaKH = kh.MaKH;
+END;
+GO
+
+CREATE PROCEDURE sp_GetDongHoNuocById
+    @MaDongHo INT
+AS
+BEGIN
+    SELECT MaDongHo, MaKH, TenKH, SoHieu, NgayLapDat
+    FROM DongHoNuoc
+    WHERE MaDongHo = @MaDongHo;
 END;
 GO
 
